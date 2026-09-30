@@ -5,4 +5,4 @@ This project is from the schoolwork for Odin Project (Etch-a-Sketch) Open it eit
 
 P.S. It automatically draws when the mouse is at the grid, as it was said in the Assignment
 
-I'll add another script file with the RGB pen (script(rgb).js), if use, remove "(rgb)" from the filename
+I'll add another script file with the RGB pen (script(rgb).js), if use, remove "_(rgb)" from the filename
