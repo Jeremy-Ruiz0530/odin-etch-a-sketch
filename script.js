@@ -2,8 +2,21 @@ const container = document.querySelector("#container");
 const resizeBtn = document.querySelector("#resize-btn");
 
 const BOARD_SIZE = 960;
+let isMouseDown = false;
 
-function createGrid(squaresPerSide) {        // Creating a Grid
+document.addEventListener("mousedown", () => isMouseDown = true);
+document.addEventListener("mouseup", () => isMouseDown = false);
+
+function getRandomRGB() {
+    const r = getRandomInt(0, 255);
+    const g = getRandomInt(0, 255);
+    const b = getRandomInt(0, 255);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function createGrid(squaresPerSide) {
     container.innerHTML = "";
     const squareSize = BOARD_SIZE / squaresPerSide;
     const totalSquares = squaresPerSide * squaresPerSide;
@@ -15,9 +28,14 @@ function createGrid(squaresPerSide) {        // Creating a Grid
         square.style.width = `${squareSize}px`;
         square.style.height = `${squareSize}px`;
 
+        square.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            square.style.backgroundColor = getRandomRGB();
+        });
 
-        square.addEventListener("mouseenter", () => {       // when hover
-            square.style.backgroundColor = "#333";
+        square.addEventListener("mouseover", () => {
+                square.style.backgroundColor = getRandomRGB();
+
         });
         container.appendChild(square);
     }
