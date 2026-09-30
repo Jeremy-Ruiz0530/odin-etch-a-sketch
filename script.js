@@ -1,13 +1,10 @@
 const container = document.querySelector("#container");
 const resizeBtn = document.querySelector("#resize-btn");
 
-const BOARD_SIZE = 960; // Total width/height of container in pixels
+const BOARD_SIZE = 960;
 
-function createGrid(squaresPerSide) {
-    // Clear out any existing grid items first
+function createGrid(squaresPerSide) {        // Creating a Grid
     container.innerHTML = "";
-
-    // Calculate exact size of each square to fit 960px
     const squareSize = BOARD_SIZE / squaresPerSide;
     const totalSquares = squaresPerSide * squaresPerSide;
 
@@ -15,21 +12,18 @@ function createGrid(squaresPerSide) {
         const square = document.createElement("div");
         square.classList.add("grid-square");
         
-        // Set dynamic dimensions using flex-basis or explicit width/height
         square.style.width = `${squareSize}px`;
         square.style.height = `${squareSize}px`;
 
-        // Add hover effect listener
-        square.addEventListener("mouseenter", () => {
-            square.style.backgroundColor = "#333"; // Changes color on hover
-        });
 
+        square.addEventListener("mouseenter", () => {       // when hover
+            square.style.backgroundColor = "#333";
+        });
         container.appendChild(square);
     }
 }
 
-// Event listener for the resize button
-resizeBtn.addEventListener("click", () => {
+resizeBtn.addEventListener("click", () => {     // Button for Change Grid Size
     let input = prompt("Enter number of squares per side (Max 100):");
     let squares = parseInt(input);
 
@@ -42,5 +36,4 @@ resizeBtn.addEventListener("click", () => {
     }
 });
 
-// Initialize default 16x16 grid on page load
-createGrid(16);
+createGrid(16); // Default Grid Lines
